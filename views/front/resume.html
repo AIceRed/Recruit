@@ -1,0 +1,214 @@
+{%extends 'title.html'%}
+{%block contents%}
+{%endblock%}
+{%block content%}
+{% if userInfo.id==1 %}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="practice">
+						<span class="icon">
+							<i class="icon-home"></i>
+						</span>
+                    <div class="desc">
+                        <h3>我的简历</h3>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="api/resumes">
+						<span class="icon">
+							<i class="icon-add-to-list"></i>
+						</span>
+                        <div class="desc">
+                            <h3>增加简历 </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="/alter">
+						<span class="icon">
+							<i class="icon-edit"></i>
+						</span>
+                        <div class="desc">
+                            <h3>修改简历 </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>我的简历</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for content in rs %}
+            {% if content.account == userInfo.username %}
+            <div class="col-md-12 animate-box ">
+                <div class="services">
+                    {% if type==1 %}
+                    <form action="api/resumess" method="post">
+                    {% else %}
+                    <form action="/resumepage" method="post">
+                    {% endif %}
+                        <div class="row" onclick='setresume("{{content.id}}");'>
+                            <div class="col-md-2 animate-box">
+                            </div>
+                            <div class="col-md-4 animate-box">
+                                <p>姓名：{{content.name}}</p>
+                                <p>性别：{{content.sex}}</p>
+                                <p>专业：{{content.major}}</p>
+                            </div>
+                            <div class="col-md-2 animate-box">
+                            </div>
+                            <div class="col-md-4 animate-box">
+                                <p>职位：{{content.position}}</p>
+                                <p>薪资：{{content.salary}}</p>
+                                <input type="text" name="id" value="{{content.id}}" style="display: none"/>
+                                {% if type==1 %}
+                                <input type="submit" value="修改信息"/>
+                                {% else %}
+                                <input type="submit" value="查看详细信息"/>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if type==1 %}
+                        </form>
+                        {% else %}
+                        </form>
+                        {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% elseif userInfo.id==2 %}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>求职简历</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for content in rs %}
+            <div class="col-md-12 animate-box ">
+                <div class="services">
+                    {% if type==1 %}
+                    <form action="api/resumess" method="post">
+                        {% else %}
+                        <form action="/resumepage" method="post">
+                            {% endif %}
+                            <div class="row" onclick='setresume("{{content.id}}");'>
+                                <div class="col-md-2 animate-box">
+                                </div>
+                                <div class="col-md-4 animate-box">
+                                    <p>姓名：{{content.name}}</p>
+                                    <p>性别：{{content.sex}}</p>
+                                    <p>专业：{{content.major}}</p>
+                                </div>
+                                <div class="col-md-2 animate-box">
+                                </div>
+                                <div class="col-md-4 animate-box">
+                                    <p>职位：{{content.position}}</p>
+                                    <p>薪资：{{content.salary}}</p>
+                                    <input type="text" name="id" value="{{content.id}}" style="display: none"/>
+                                    {% if type==1 %}
+                                    <input type="submit" value="修改信息"/>
+                                    {% else %}
+                                    <input type="submit" value="查看详细信息"/>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if type==1 %}
+                        </form>
+                        {% else %}
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% elseif userInfo.id==3 %}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>求职简历</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for content in rs %}
+            <div class="col-md-12 animate-box ">
+                <div class="services">
+                    {% if type==1 %}
+                    <form action="api/resumess" method="post">
+                        {% else %}
+                        <form action="/resumepage" method="post">
+                            {% endif %}
+                            <div class="row" onclick='setresume("{{content.id}}");'>
+                                <div class="col-md-2 animate-box">
+                                </div>
+                                <div class="col-md-4 animate-box">
+                                    <p>姓名：{{content.name}}</p>
+                                    <p>性别：{{content.sex}}</p>
+                                    <p>专业：{{content.major}}</p>
+                                </div>
+                                <div class="col-md-2 animate-box">
+                                </div>
+                                <div class="col-md-4 animate-box">
+                                    <p>职位：{{content.position}}</p>
+                                    <p>薪资：{{content.salary}}</p>
+                                    <input type="text" name="id" value="{{content.id}}" style="display: none"/>
+                                    {% if type==1 %}
+                                    <input type="submit" value="修改信息"/>
+                                    {% else %}
+                                    <input type="submit" value="查看详细信息"/>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if type==1 %}
+                        </form>
+                        {% else %}
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="panel panel-danger" style="margin: 50px">
+    <div class="panel-heading">
+        <h3 class="panel-title">欢迎使用招聘网</h3>
+    </div>
+    <div class="panel-body">
+        <p style="font-size: 30px;padding-bottom: 100px">请先登录</p>
+    </div>
+</div>
+{% endif %}
+{%endblock%}

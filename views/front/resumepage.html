@@ -1,0 +1,207 @@
+{%extends 'title.html'%}
+{%block content%}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>个人信息:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p id="myid" style="display: none">{{rs[0].id}}</p>
+                        <p>姓名：{{rs[0].name}}</p>
+                        <p>生日：{{rs[0].birthday}}</p>
+                        <p>邮箱：{{rs[0].postbox}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>性别：{{rs[0].sex}}</p>
+                        <p>学历：{{rs[0].record}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>求职意向:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>职位：{{rs[0].position}}</p>
+                        <p>工作经验：{{rs[0].experiencetime}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>期望薪资：{{rs[0].salary}}</p>
+                        <p>到岗时间：{{rs[0].time}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>教育经历:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>学校：{{rs[0].school}}</p>
+                        <p>入学时间：{{rs[0].data1}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>专业：{{rs[0].major}}</p>
+                        <p>毕业时间：{{rs[0].data1}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>工作履历:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{rs[0].experience}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>专业技能:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{rs[0].skill}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>专业证书:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{rs[0].diploma}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if userInfo.id==3 %}
+        <div class="col-md-12 animate-box ">
+            <p id="leva" style="display: none">{{rs[0].level}}</p>
+            {% if rs[0].level=="A" %}
+            <div class="services s">
+                <div class="row">
+                    <div class="col-md-5 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <h3 id="t">标为优秀简历</h3>
+                    </div>
+                    <div class="col-md-3 animate-box">
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="services s">
+                <div class="row">
+                    <div class="col-md-5 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <h3 id="t">取消优秀</h3>
+                    </div>
+                    <div class="col-md-3 animate-box">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    var id = $("#myid").text();
+    if($("#leva").text()=="A"){
+        $(".s").click(function(){
+            add();
+        });
+    }else{
+        $(".s").click(function(){
+            del();
+        });
+    }
+
+ function add(){
+     $.ajax({
+         type: 'post',
+         url: '/api/resumes/levl',
+         data: {
+             id:id
+         },
+         dataType: 'json',
+         success: function (result) {
+             $(".s").click(function(){
+                 del();
+             });
+             $("#t").text("取消优秀");
+         }
+     });
+ }
+ function del(){
+     $.ajax({
+         type: 'post',
+         url: '/api/resumes/levld',
+         data: {
+             id: 1
+         },
+         dataType: 'json',
+         success: function (result) {
+             $(".s").click(function(){
+                 add();
+             });
+             $("#t").text("标为优秀简历");
+         }
+     });
+ }
+</script>
+{%endblock%}

@@ -1,0 +1,148 @@
+{%extends 'title.html'%}
+{%block content%}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+        {% if profile.name %}
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司简介:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>公司名称：{{profile.name}}</p>
+                        <p>公司人数：{{profile.num}}</p>
+                        <p>公司邮箱：{{profile.post}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>公司类型：{{profile.type}}</p>
+                        <p>公司电话：{{profile.tel}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司介绍:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{profile.introduce}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司地址:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{profile.address}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>招聘信息:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>职位：{{recruit.position}}</p>
+                        <p>薪资：{{recruit.salary}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>工作经验：{{recruit.experiencetime}}</p>
+                        <p>发布时间：{{recruit.data}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>福利待遇:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{recruit.welfare}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>职位信息:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{recruit.positionmessage}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>联系方式:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>电话：{{recruit.tel}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>邮箱：{{recruit.postbox}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{%endblock%}
+

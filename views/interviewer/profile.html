@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>公司介绍信息录入</title>
+    <link href="../common/css/demo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% if type == 1 %}
+<section id="getintouch" class="fadeInRightBig animated">
+    <div class="container" style="border-bottom: 0;">
+        <h1>
+            <span>公司介绍</span>
+        </h1>
+    </div>
+    <div class="container">
+        <form class="contact" method="post" action="/api/profile/resprofile">
+            <div class="row">
+                <div class="lbl">公司名称</div>
+                <div class="ctrl">
+                    <input type="text" name="name" value="{{rs[0].name}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司人数</div>
+                <div class="ctrl">
+                    <input type="text" name="num" value="{{rs[0].num}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司类型</div>
+                <div class="ctrl">
+                    <input type="text" name="type" value="{{rs[0].type}}"/>
+                </div>
+            </div>
+            <div class="row">
+            <div class="ctrl">
+                   	 公司电话<input type="text" name="tel" value="{{rs[0].tel}}"/>
+                   	 公司邮箱<input type="email" name="email" value="{{rs[0].post}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司介绍</div>
+                <div class="ctrl">
+                    <textarea name="introduce" rows="6" cols="10" >{{rs[0].introduce}}</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司地址</div>
+                <div class="ctrl">
+                    <textarea name="address" rows="6" cols="10" >{{rs[0].address}}</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset2">
+                    <input type="submit" class="submit" value="提交数据">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% else %}
+<section id="getintouch" class="fadeInRightBig animated">
+    <div class="container" style="border-bottom: 0;">
+        <h1>
+            <span>公司介绍</span>
+        </h1>
+    </div>
+    <div class="container">
+        <form class="contact" method="post" action="/api/profile/addprofile" onSubmit="return beforeSubmit(this);">
+            <div class="row">
+                <div class="lbl">公司名称</div>
+                <div class="ctrl">
+                    <input type="text" name="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司人数</div>
+                <div class="ctrl">
+                    <input type="text" name="num" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司类型</div>
+                <div class="ctrl">
+                    <input type="text" name="type" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="ctrl">
+                    公司电话<input type="text" name="tel" >
+                    公司邮箱<input type="email" name="email" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司介绍</div>
+                <div class="ctrl">
+                    <textarea name="introduce" rows="6" cols="10" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">公司地址</div>
+                <div class="ctrl">
+                    <textarea name="address" rows="6" cols="10" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset2">
+                    <input type="submit" class="submit" value="提交数据">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endif %}
+</body>
+</html>

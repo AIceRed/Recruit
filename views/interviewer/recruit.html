@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>招聘信息录入</title>
+    <link href="../common/css/demo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<section id="getintouch" class="fadeInRightBig animated">
+    <div class="container" style="border-bottom: 0;">
+        <h1>
+            <span>招聘信息</span>
+        </h1>
+    </div>
+    <div class="container">
+        <form class="contact" method="post" action="/api/recruit/addrecruit">
+            <div class="row">
+                <div class="lbl">公司名称</div>
+                <div class="ctrl">
+                    <input type="text" name="name"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">职位</div>
+                <div class="ctrl">
+                    <input type="text" name="position"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">工作经验</div>
+                <div class="ctrl">
+                    <input type="text" name="experiencetime"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">薪资</div>
+                <div class="ctrl">
+                    <input type="text" name="salary"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">福利</div>
+                <div class="ctrl">
+                    <textarea name="welfare" rows="6" cols="10" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lbl">职位信息</div>
+                <div class="ctrl">
+                    <textarea name="positionmessage" rows="6" cols="10" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ctrl">
+                    联系电话<input type="text" name="tel" />
+                    邮箱<input type="email" name="post"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset2">
+                    <input type="submit" class="submit" value="提交数据"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

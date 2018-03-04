@@ -1,0 +1,12 @@
+.banner{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-height: 500px;
+}
+.bod{
+    border: 2px solid lightgray;
+}
+.a-color{
+    color: darkgray;
+}

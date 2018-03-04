@@ -1,0 +1,255 @@
+{%extends 'title.html'%}
+{%block content%}
+{% if userInfo.id==2 %}
+<div id="fh5co-practice" class="fh5co-bg-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="company">
+						<span class="icon">
+							<i class="icon-paper"></i>
+						</span>
+                        <div class="desc">
+                            <h3>公司信息</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="job">
+						<span class="icon">
+							<i class="icon-home"></i>
+						</span>
+                        <div class="desc">
+                            <h3>招聘信息 </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="services">
+                    <a href="/addrecruit">
+						<span class="icon">
+							<i class="icon-add-to-list"></i>
+						</span>
+                        <div class="desc">
+                            <h3>增加招聘 </h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                {% if msg==1 %}
+                <h2>公司信息</h2>
+                {% else %}
+                <h2>招聘信息</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if msg==1 %}
+    <div class="container">
+        {% if profile.account %}
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司简介:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>公司名称：{{profile.name}}</p>
+                        <p>公司人数：{{profile.num}}</p>
+                        <p>公司邮箱：{{profile.post}}</p>
+                    </div>
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <p>公司类型：{{profile.type}}</p>
+                        <p>公司电话：{{profile.tel}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司介绍:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{profile.introduce}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 animate-box ">
+            <div class="services">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>公司地址:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 animate-box">
+                    </div>
+                    <div class="col-md-10 animate-box">
+                        <p>{{profile.address}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 animate-box ">
+            <a href="/api/profiles">
+                <div class="services">
+                    <div class="row">
+                        <div class="col-md-5 animate-box">
+                        </div>
+                        <div class="col-md-4 animate-box">
+                            <h3>修改信息</h3>
+                        </div>
+                        <div class="col-md-3 animate-box">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% else %}
+        <div class="col-md-12 animate-box ">
+            <a href="/api/profile">
+                <div class="services">
+                    <div class="row">
+                        <div class="col-md-5 animate-box">
+                        </div>
+                        <div class="col-md-4 animate-box">
+                            <h3>添加公司信息</h3>
+                        </div>
+                        <div class="col-md-3 animate-box">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="row">
+            {% for content in rs %}
+            {% if content.account == userInfo.username %}
+            <div class="col-md-12 animate-box " id="{{content.id}}" style="display: block">
+                <form action="/jobpage" method="post">
+                    <div class="services">
+                        <div class="row">
+                            <div class="col-md-3 animate-box">
+                                <p>公司：{{content.name}}</p>
+                                <input name="company" value="{{content.account}}" style="display: none"/>
+                                <input name="id" value="{{content.id}}" style="display: none"/>
+                            </div>
+                            <div class="col-md-3 animate-box">
+                                <p>职位：{{content.position}}</p>
+                            </div>
+                            <div class="col-md-3 animate-box">
+                                <p>薪资：{{content.salary}}</p>
+                            </div>
+                            <div class="col-md-1 animate-box">
+                                <input type="submit" value="详细信息"/>
+                            </div>
+                            <div class="col-md-1 animate-box">
+                                <input type="button" value="移除" onclick='remove("{{content.id}}")'/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% else %}
+<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <span class="icon"><i class="icon-user"></i></span>
+                <span class="fh5co-counter js-counter" data-from="0" data-to="300" data-speed="5000" data-refresh-interval="50"></span>
+                <span class="fh5co-counter-label">注册公司</span>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <span class="icon"><i class="icon-trophy"></i></span>
+                <span class="fh5co-counter js-counter" data-from="0" data-to="3000" data-speed="5000" data-refresh-interval="50"></span>
+                <span class="fh5co-counter-label">空缺职位</span>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <span class="icon"><i class="icon-users"></i></span>
+                <span class="fh5co-counter js-counter" data-from="0" data-to="800" data-speed="5000" data-refresh-interval="50"></span>
+                <span class="fh5co-counter-label">注册用户</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for content in rs %}
+            <div class="col-md-12 animate-box ">
+                <form action="/jobpage" method="post">
+                    <div class="services">
+                        <div class="row">
+                            <div class="col-md-1 animate-box">
+                            </div>
+                            <div class="col-md-3 animate-box">
+                                <p>公司：{{content.name}}</p>
+                                <input name="company" value="{{content.account}}" style="display: none"/>
+                                <input name="id" value="{{content.id}}" style="display: none"/>
+                            </div>
+                            <div class="col-md-3 animate-box">
+                                <p>职位：{{content.position}}</p>
+                            </div>
+                            <div class="col-md-3 animate-box">
+                                <p>薪资：{{content.salary}}</p>
+                            </div>
+                            <div class="col-md-1 animate-box">
+                                <input type="submit" value="详细信息"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+<script>
+    function remove(id){
+       $.ajax({
+            type: 'post',
+            url: '/api/user/remove',
+            data: {
+                id:id
+            },
+            dataType: 'json',
+            success: function (result) {
+                $("#"+id)[0].style.display = 'none';
+            }
+        });
+    }
+</script>
+{%endblock%}
