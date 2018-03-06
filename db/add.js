@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2018/1/21.
  */
-var OptPool = require('./mysqlPool.js');
+var OptPool = require('./mysqlPool');
 
 var optPool = new OptPool();
 var pool = optPool.getPool();
